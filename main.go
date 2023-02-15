@@ -20,9 +20,16 @@ func main() {
 	config.InitConfig(env)
 
 	router := gin.New()
-	bootstrap.SetupRoute(router)
 
-	err := router.Run(":" + config.Get("app.port"))
+	err := router.SetTrustedProxies([]string{"127.0.0.1"})
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	bootstrap.SetupRoute(router)
+	bootstrap.SetupDB()
+
+	err = router.Run(":" + config.Get("app.port"))
 	if err != nil {
 		fmt.Println(err.Error())
 	}
