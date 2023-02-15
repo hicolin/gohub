@@ -3,12 +3,14 @@ package bootstrap
 import (
 	"errors"
 	"fmt"
+	"gohub/app/models/user"
+	"time"
+
 	"gohub/pkg/config"
 	"gohub/pkg/database"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"time"
 )
 
 func SetupDB() {
@@ -38,4 +40,6 @@ func SetupDB() {
 	database.SQLDB.SetMaxOpenConns(config.GetInt("database.mysql.max_open_connections"))
 	database.SQLDB.SetMaxIdleConns(config.GetInt("database.mysql.max_idle_connections"))
 	database.SQLDB.SetConnMaxIdleTime(time.Duration(config.GetInt("database.mysql.max_life_seconds")) * time.Second)
+
+	database.DB.AutoMigrate(&user.User{})
 }
