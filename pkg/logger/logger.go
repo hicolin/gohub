@@ -130,6 +130,10 @@ func Warn(moduleName string, fields ...zap.Field) {
 	Logger.Warn(moduleName, fields...)
 }
 
+func Error(moduleName string, fields ...zap.Field) {
+	Logger.Error(moduleName, fields...)
+}
+
 func Fatal(moduleName string, fields ...zap.Field) {
 	Logger.Fatal(moduleName, fields...)
 }
