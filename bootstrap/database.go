@@ -4,13 +4,13 @@ import (
 	"errors"
 	"fmt"
 	"gohub/app/models/user"
+	"gohub/pkg/logger"
 	"time"
 
 	"gohub/pkg/config"
 	"gohub/pkg/database"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 )
 
 func SetupDB() {
@@ -35,7 +35,7 @@ func SetupDB() {
 		panic(errors.New("database connection not supported"))
 	}
 
-	database.Connect(dbConfig, logger.Default.LogMode(logger.Info))
+	database.Connect(dbConfig, logger.NewGormLogger())
 
 	database.SQLDB.SetMaxOpenConns(config.GetInt("database.mysql.max_open_connections"))
 	database.SQLDB.SetMaxIdleConns(config.GetInt("database.mysql.max_idle_connections"))
