@@ -32,6 +32,7 @@ func main() {
 
 	bootstrap.SetupRoute(router)
 	bootstrap.SetupDB()
+	bootstrap.SetupRedis()
 
 	err = router.Run(":" + config.Get("app.port"))
 	if err != nil {
