@@ -5,7 +5,7 @@ import (
 	v1 "gohub/app/http/controllers/api/v1"
 	"gohub/pkg/captcha"
 	"gohub/pkg/logger"
-	"net/http"
+	"gohub/pkg/response"
 )
 
 type VerifyCodeController struct {
@@ -15,7 +15,8 @@ type VerifyCodeController struct {
 func (vc *VerifyCodeController) ShowCaptcha(c *gin.Context) {
 	id, b64s, err := captcha.NewCaptcha().GenerateCaptcha()
 	logger.LogIf(err)
-	c.JSON(http.StatusOK, gin.H{
+
+	response.JSON(c, gin.H{
 		"captcha_id":    id,
 		"captcha_image": b64s,
 	})
