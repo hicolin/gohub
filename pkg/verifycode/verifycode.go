@@ -31,7 +31,7 @@ func NewVerifyCode() *VerifyCode {
 	return internalVerifyCode
 }
 
-func (vc *VerifyCode) sendSMS(phone string) bool {
+func (vc *VerifyCode) SendSMS(phone string) bool {
 	code := vc.generateVerifyCode(phone)
 
 	if !app.IsProduction() && strings.HasPrefix(phone, config.GetString("verifycode.debug_phone_prefix")) {
