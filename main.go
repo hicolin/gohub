@@ -33,7 +33,10 @@ func main() {
 		},
 	}
 
-	rootCmd.AddCommand(appCmd.CmdServe)
+	rootCmd.AddCommand(
+		appCmd.CmdServe,
+		appCmd.CmdKey,
+	)
 
 	appCmd.RegisterDefaultCmd(rootCmd, appCmd.CmdServe)
 
