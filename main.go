@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	appCmd "gohub/app/cmd"
+	appMake "gohub/app/cmd/make"
 	"gohub/bootstrap"
 	btsConfig "gohub/config"
 	"gohub/pkg/config"
@@ -37,6 +38,7 @@ func main() {
 		appCmd.CmdServe,
 		appCmd.CmdKey,
 		appCmd.CmdPlay,
+		appMake.CmdMake,
 	)
 
 	appCmd.RegisterDefaultCmd(rootCmd, appCmd.CmdServe)
