@@ -39,6 +39,7 @@ func main() {
 		appCmd.CmdKey,
 		appCmd.CmdPlay,
 		appMake.CmdMake,
+		appMake.CmdMakeModel,
 	)
 
 	appCmd.RegisterDefaultCmd(rootCmd, appCmd.CmdServe)
