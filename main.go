@@ -40,6 +40,7 @@ func main() {
 		appCmd.CmdPlay,
 		appMake.CmdMake,
 		appMake.CmdMakeModel,
+		appMake.CmdMakeAPIController,
 	)
 
 	appCmd.RegisterDefaultCmd(rootCmd, appCmd.CmdServe)
