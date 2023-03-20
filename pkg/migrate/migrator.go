@@ -128,3 +128,17 @@ func (migrator *Migrator) rollbackMigrations(migrations []Migration) bool {
 	}
 	return runed
 }
+
+func (migrator *Migrator) Reset() {
+	migrations := []Migration{}
+	migrator.DB.Order("id DESC").Find(&migrations)
+
+	if !migrator.rollbackMigrations(migrations) {
+		console.Success("[migrations] table is empty, nothing to reset")
+	}
+}
+
+func (migrator *Migrator) Refresh() {
+	migrator.Reset()
+	migrator.Up()
+}
