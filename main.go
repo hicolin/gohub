@@ -43,6 +43,7 @@ func main() {
 		appMake.CmdMakeAPIController,
 		appMake.CmdMakeRequest,
 		appCmd.CmdMigrate,
+		appMake.CmdMakeMigration,
 	)
 
 	appCmd.RegisterDefaultCmd(rootCmd, appCmd.CmdServe)
