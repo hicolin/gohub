@@ -9,7 +9,7 @@ type migrationFunc func(migrator gorm.Migrator, db sql.DB)
 
 type MigrationFile struct {
 	Up       migrationFunc
-	down     migrationFunc
+	Down     migrationFunc
 	FileName string
 }
 
@@ -19,7 +19,7 @@ func Add(name string, up migrationFunc, down migrationFunc) {
 	migrationFiles = append(migrationFiles, MigrationFile{
 		FileName: name,
 		Up:       up,
-		down:     down,
+		Down:     down,
 	})
 }
 
