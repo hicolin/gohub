@@ -44,6 +44,7 @@ func main() {
 		appMake.CmdMakeRequest,
 		appCmd.CmdMigrate,
 		appMake.CmdMakeMigration,
+		appCmd.CmdDBSeed,
 	)
 
 	appCmd.RegisterDefaultCmd(rootCmd, appCmd.CmdServe)
