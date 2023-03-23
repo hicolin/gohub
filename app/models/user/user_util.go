@@ -1,6 +1,11 @@
 package user
 
-import "gohub/pkg/database"
+import (
+	"github.com/gin-gonic/gin"
+	"gohub/pkg/app"
+	"gohub/pkg/database"
+	"gohub/pkg/paginator"
+)
 
 func IsEmailExist(email string) bool {
 	var count int64
@@ -40,5 +45,16 @@ func GetByEmail(email string) (userModel User) {
 
 func All() (users []User) {
 	database.DB.Find(&users)
+	return
+}
+
+func Paginate(c *gin.Context, PerPage int) (users []User, paging paginator.Paging) {
+	paging = paginator.Paginate(
+		c,
+		database.DB.Model(User{}),
+		&users,
+		app.V1URL(database.TableName(&User{})),
+		PerPage,
+	)
 	return
 }
