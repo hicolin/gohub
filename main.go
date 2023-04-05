@@ -18,6 +18,9 @@ func init() {
 
 func main() {
 
+	// todo
+	// 第十五章 分类
+
 	var rootCmd = &cobra.Command{
 		Use:   "Gohub",
 		Short: "A simple forum project",
